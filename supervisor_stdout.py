@@ -20,7 +20,7 @@ def main():
 def event_handler(event, response):
     line, data = response.split(b'\n', 1)
     headers = dict([ x.split(b':') for x in line.split() ])
-    lines = data.split(b'\n')
+    lines = data.splitlines()
     prefix = b'%s %s | '%(headers[b'processname'], headers[b'channel'])
     print(b'\n'.join([ prefix + l for l in lines if l]).decode('utf-8'))
 
